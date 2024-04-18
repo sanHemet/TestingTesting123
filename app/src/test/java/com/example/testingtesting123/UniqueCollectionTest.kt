@@ -31,6 +31,30 @@ class UniqueCollectionTest {
     }
 
     @Test
+    fun getItem() {
+
+        val item1 = Item("Item1");
+        collection.addItem(item1);
+        val gotItem = collection.get(0);
+
+        assert(gotItem.equals(item1)) {"Could not GET item"}
+
+    }
+
+    @Test
+    fun removeItem() {
+
+        collection.addItem(Item("Item1"));
+        collection.addItem(Item("Item2"));
+
+        val currentSize = collection.size();
+
+        collection.remove(Item("Item1"));
+
+        assert(collection.get(0).equals(Item("Item2")) && collection.size().equals(currentSize-1)) {"Item not removed"}
+    }
+
+    @Test
     fun clearAllItems() {
         collection.addItem(Item("item1"))
         collection.addItem(Item("Item2"))
